@@ -1,0 +1,43 @@
+{
+    "include": ["./src/**/*"],
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "baseUrl": "./src",
+        "strictNullChecks": true,
+        "noImplicitAny": true,
+        "declaration": false,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "lib": ["es2021"],
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "outDir": "./dist",
+        "paths": {
+            "@controllers": ["controllers/index"],
+            "@controllers/*": ["controllers/*"],
+            "@middlewares": ["middlewares/index"],
+            "@middlewares/*": ["middlewares/*"],
+            "@models": ["models/index"],
+            "@models/*": ["models/*"],
+            "@schema": ["schema/index"],
+            "@schema/*": ["schema/*"],
+            "@helpers": ["helpers/index"],
+            "@helpers/*": ["helpers/*"],
+            "@services": ["services/index"],
+            "@services/*": ["services/*"],
+            "@shared": ["shared/index"],
+            "@shared/*": ["shared/*"],
+            "@database": ["database/index"],
+            "@database/*": ["database/*"]
+        },
+        "removeComments": false,
+        "resolveJsonModule": true,
+        "sourceMap": true,
+        "target": "es2018",
+        // "target": "es5",
+        "typeRoots": ["./node_modules/@types", "./types"],
+        "types": ["jest", "node"]
+    }
+}

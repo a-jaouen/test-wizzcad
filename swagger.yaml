@@ -1,0 +1,27 @@
+openapi: 3.0.0
+info:
+  title: WIZZCAD - The model API
+  version: "1"
+servers:
+  - url: http://127.0.0.1:8080/
+
+tags:
+  - name: System
+    description: Service base functions
+
+paths:
+  /health:
+    get:
+      tags:
+        - System
+      summary: Checks if the server is running
+      responses:
+        200:
+          description: The server is running
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  ok:
+                    type: boolean

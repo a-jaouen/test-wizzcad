@@ -1,0 +1,89 @@
+version: '3.7'
+
+services:
+  wizzcad-model-api:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: dev
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=info
+      - TEST=integration
+      - DEBUG=true
+      - PORT=8080
+      - DB_HOST=wizzcad-model-db
+      - DB_PORT=5438
+      - DB_NAME=wizzcad-model
+      - DB_USER=1234567890
+      - DB_PASSWD=1234
+    command:  DEBUG=express:* npm run serve
+    ports:
+      - "8080:8080"
+    depends_on:
+      - wizzcad-model-db
+    volumes:
+      - './build:/opt/project/build'
+    #    working_dir: '/opt/project'
+    networks:
+      - internal
+      # - oro-network
+
+  wizzcad-model-tester:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: tester
+    environment:
+      - TEST=tester
+
+  wizzcad-model-integrator:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      target: integrator
+    depends_on:
+      - wizzcad-model-db
+    environment:
+      - NODE_ENV=development
+      - LOG_LEVEL=debug
+      - DB_ENV=staging
+      - TEST=integration
+      - STAGE=integration
+      #- DEBUG=true
+      - PORT=8080
+      - DB_HOST=wizzcad-model-db
+      - DB_PORT=5438
+      - DB_NAME=wizzcad-model
+      - DB_USER=1234567890
+      - DB_PASSWD=1234
+    networks:
+      - internal
+      # - oro-network
+
+  wizzcad-model-db:
+    image               : postgres:latest
+    environment:
+      POSTGRES_DB           : wizzcad-model
+      POSTGRES_USER         : 1234567890
+      POSTGRES_PASSWORD     : 1234
+    volumes:
+      - ./store/postgresql/schema-dev.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./store/postgresql/schema.sql:/docker-entrypoint-initdb.d/2.sql
+      - ./store/postgresql/seeds.sql:/docker-entrypoint-initdb.d/3.sql
+      - ./store/postgresql/dev.sql:/docker-entrypoint-initdb.d/4.sql
+      - ./store/postgresql/staging.sql:/docker-entrypoint-initdb.d/5.sql
+      - wizzcad-model-data_volume:/var/lib/postgresql/data
+    ports:
+      - "5438:5438"
+    command: -p 5438
+    networks:
+      - internal
+
+networks:
+  internal:
+  # oro-network:
+  #   name: oro-network-global
+
+volumes:
+  wizzcad-model-data_volume: {}

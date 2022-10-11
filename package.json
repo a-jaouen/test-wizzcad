@@ -1,0 +1,99 @@
+{
+    "name": "wizzcad-models",
+    "version": "0.0.0",
+    "description": "The WIZZCAD model server.",
+    "engines": {
+        "npm": "^8.3.1",
+        "node": "^v16.14.0"
+    },
+    "main": "index.js",
+    "scripts": {
+        "start": "ts-node-dev -r dotenv/config -r tsconfig-paths/register ./src/index.ts",
+        "serve": "ts-node --transpile-only -r dotenv/config -r tsconfig-paths/register ./src/index.ts",
+        "build": "tsc --lib dom",
+        "test": "jest",
+        "test:nocache": "jest --no-cache --runInBand",
+        "test:watch": "jest --watch --verbose false",
+        "test:ci:unit": "jest --forceExit --coverage --verbose --runInBand --passWithNoTests --no-cache --detectOpenHandles --runTestsByPath ./test/unit/**/*.[jt]s",
+        "test:ci:integration": "jest --forceExit --verbose --runInBand --silent=true --passWithNoTests --no-cache --detectOpenHandles --runTestsByPath ./test/integration/**/*.[jt]s",
+        "lint": "eslint './src/**/*'",
+        "pretty": "prettier --write './src/**/*.{ts,js,json,md}'"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "*.{ts,js,json,md,scss}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "author": "Antoine <antoine.jaouen@gmail.com>",
+    "license": "UNLICENSED",
+    "private": false,
+    "dependencies": {
+        "@google-cloud/secret-manager": "^3.5.0",
+        "@hapi/boom": "^9.1.4",
+        "axios": "^0.23.0",
+        "body-parser": "^1.19.0",
+        "cors": "^2.8.5",
+        "debug": "^4.3.2",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "express-jwt": "^6.1.0",
+        "express-jwt-permissions": "^1.3.6",
+        "joi": "^17.4.2",
+        "jsonwebtoken": "^8.5.1",
+        "jwks-rsa": "^2.0.4",
+        "knex": "^0.21.17",
+        "lodash": "^4.17.21",
+        "oro-sdk-apis": "^1.24.0",
+        "pg": "^8.7.1",
+        "source-map-support": "^0.5.20",
+        "swagger-autogen": "^2.11.2",
+        "swagger-ui-express": "^4.1.5",
+        "ts-node": "^10.2.1",
+        "tsconfig-paths": "^3.11.0",
+        "typescript": "4.6.3",
+        "yamljs": "^0.3.0"
+    },
+    "devDependencies": {
+        "@jest-mock/express": "^1.4.5",
+        "@types/axios": "^0.14.0",
+        "@types/boom": "^7.3.1",
+        "@types/cors": "^2.8.12",
+        "@types/debug": "^4.1.7",
+        "@types/express": "^4.17.13",
+        "@types/express-jwt": "^6.0.4",
+        "@types/express-unless": "^0.5.2",
+        "@types/jest": "^27.0.1",
+        "@types/jsonwebtoken": "^8.5.5",
+        "@types/lodash": "^4.14.173",
+        "@types/node": "^16.9.4",
+        "@types/pg": "^8.6.1",
+        "@types/pino": "^6.3.11",
+        "@types/supertest": "^2.0.11",
+        "@types/swagger-ui-express": "^4.1.3",
+        "@types/yamljs": "^0.2.31",
+        "@typescript-eslint/eslint-plugin": "^4.31.1",
+        "@typescript-eslint/parser": "^4.31.1",
+        "axios-mock-adapter": "^1.20.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-import": "^2.25.4",
+        "express-oas-generator": "^1.0.41",
+        "husky": "^4.3.4",
+        "jest": "^27.2.0",
+        "jest-cucumber-fusion": "^0.8.1",
+        "lint-staged": "^11.1.2",
+        "mock-knex": "^0.4.10",
+        "nock": "^13.1.3",
+        "node-notifier": "^10.0.0",
+        "prettier": "^2.4.1",
+        "supertest": "^6.1.6",
+        "ts-jest": "^27.0.5",
+        "ts-node-dev": "^1.1.8",
+        "uuid": "^8.3.2"
+    }
+}

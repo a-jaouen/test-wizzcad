@@ -1,0 +1,2 @@
+-- This file contain seeds that are going to be applied to staging. This can be used to
+-- pre-populate some data for tests or something alike

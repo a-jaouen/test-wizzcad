@@ -1,0 +1,2 @@
+-- This file contain seeds that are going to be applied to production. This can be used to
+-- pre-populate some admin users or some initial state that the db should have

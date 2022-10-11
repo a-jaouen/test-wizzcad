@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+        "eg2.vscode-npm-script",
+        "christian-kohler.npm-intellisense",
+        "christian-kohler.path-intellisense",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-tslint-plugin",
+        "visualstudioexptteam.vscodeintellicode",
+        "PKief.material-icon-theme"
+    ]
+}
