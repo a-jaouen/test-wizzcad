@@ -1,9 +1,18 @@
 import { knexGlobal, KnexSingleton } from '@database/knex'
 import * as forms from '@database/models/forms'
-import { Form } from '@shared/wizzcad-model'
+import { Form, FormRequest } from '@shared/wizzcad-model'
 
 export class FormService {
     constructor(private knexInstance: KnexSingleton) {}
+
+    public async insert(formRequest: FormRequest): Promise<Form> {
+        const dbconn = this.knexInstance.getInstance()
+        if (!dbconn) {
+            throw new Error('Unable to obtain db connection to insert')
+        }
+
+        return await forms.insert(dbconn, formRequest)
+    }
 
     public async getAll(): Promise<Form[]> {
         const dbconn = this.knexInstance.getInstance()

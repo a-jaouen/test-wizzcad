@@ -1,4 +1,4 @@
-import { Form, ObjectKind } from '@shared/wizzcad-model'
+import { Form, FormRequest, ObjectKind } from '@shared/wizzcad-model'
 import Knex from 'knex'
 
 export interface FormFields {
@@ -18,10 +18,25 @@ function db2ts(objectFromDB: FormFields): Form {
     }
 }
 
-export async function getAllForms(dbConnection: Knex): Promise<Form[]> {
-    const workflows = await dbConnection<FormFields>('forms').withSchema('wizzcad').where({ archived: false })
+export async function insert(dbConnection: Knex, formRequest: FormRequest): Promise<Form> {
+    const newForm = await dbConnection<FormFields>('forms')
+        .withSchema('wizzcad')
+        .insert({
+            items: JSON.stringify(formRequest.items),
+        })
+        .returning('*')
 
-    return workflows.map((workflow) => db2ts(workflow))
+    if (newForm && newForm.length > 0) {
+        return db2ts(newForm[0])
+    } else {
+        throw new Error('Error while inserting new form')
+    }
+}
+
+export async function getAllForms(dbConnection: Knex): Promise<Form[]> {
+    const forms = await dbConnection<FormFields>('forms').withSchema('wizzcad').where({ archived: false })
+
+    return forms.map((workflow) => db2ts(workflow))
 }
 
 export async function getForm(dbConnection: Knex, uuid: string): Promise<Form | undefined> {
