@@ -1,6 +1,6 @@
 import Knex from 'knex'
 
-const { DB_HOST, DB_PORT, DB_NAME = 'wizzcad-model', DB_SCHEMA = 'wizzcad-model', DB_ENV = 'development' } = process.env
+const { DB_HOST, DB_PORT, DB_NAME = 'wizzcad', DB_SCHEMA = 'wizzcad', DB_ENV = 'development' } = process.env
 
 export class KnexSingleton {
     private static knexInstance: Knex | undefined

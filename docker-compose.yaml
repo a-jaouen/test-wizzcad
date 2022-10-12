@@ -64,7 +64,7 @@ services:
   wizzcad-model-db:
     image               : postgres:latest
     environment:
-      POSTGRES_DB           : wizzcad-model
+      POSTGRES_DB           : wizzcad
       POSTGRES_USER         : 1234567890
       POSTGRES_PASSWORD     : 1234
     volumes:

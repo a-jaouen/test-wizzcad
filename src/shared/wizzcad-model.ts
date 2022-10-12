@@ -2,28 +2,24 @@
  * This enum represents all the possible field kinds
  */
 export enum FieldKinds {
-    string,
-    integer,
-    decimal,
-    percentage,
-    boolean,
-    array,
+    string = 'string',
+    integer = 'integer',
+    decimal = 'decimal',
+    percentage = 'percentage',
+    boolean = 'boolean',
+    array = 'array',
 }
 
 /**
  * This enum represents all the possible object kinds
  */
 export enum ObjectKind {
-    field,
-    section,
-    form,
+    field = 'field',
+    section = 'section',
+    form = 'form',
 }
 
 interface BasicFormObject {
-    /**
-     * The uuid of the object
-     */
-    uuid: string
     /**
      * This field is used as a discriminator to type properly the basic form objects
      */
@@ -61,12 +57,23 @@ export interface Section {
 }
 
 /**
- * This interface represents a form
+ * This interface represents a creation request of a form
  */
-export interface Form {
+export interface FormRequest {
     objectKind: ObjectKind.form
     /**
      * The underlying items of the form
      */
     items: (Field | Section)[]
+}
+
+export interface Form extends FormRequest {
+    /**
+     * The uuid of the form
+     */
+    uuid: string
+    /**
+     * Represents if the object is archived or not. When archived the form is not accessible through GET forms or GET form by id
+     */
+    archived: boolean
 }

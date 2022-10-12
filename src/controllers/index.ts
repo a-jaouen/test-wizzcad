@@ -2,7 +2,7 @@ import { addAllRoutesToRouter } from '@shared/helpers'
 import { RoutesInfos } from '@shared/internal_types'
 import { Router, Request, Response } from 'express'
 
-// export * from './triggers'
+export * from './forms'
 
 const router = Router()
 

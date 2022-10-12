@@ -63,6 +63,7 @@ function applyRequestMiddleWares(app: Application): void {
  */
 export function applyRoutes(app: Application, prefix: string): void {
     app.use('', controllers.routerCore)
+    app.use(prefix + '/forms', controllers.routerForm)
     process.env.DEBUG && console.debug('Router / has => ' + JSON.stringify(controllers.routerCore.stack))
 
     // The 404 Route (ALWAYS Keep this as the last route)

@@ -1,6 +1,8 @@
 import { HandlerInfos, RoutesInfos } from '@shared/internal_types'
 import { ErrorRequestHandler, RequestHandler, Router } from 'express'
 
+export const expUUIDCheck = '[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}'
+
 export function addAllRoutesToRouter(routerToAddTo: Router, routePrefix: string, handlers: RoutesInfos): void {
     Object.keys(handlers).map((currentHTTPType: string) => {
         let infosHandlers: HandlerInfos | HandlerInfos[] | undefined = handlers[currentHTTPType]
