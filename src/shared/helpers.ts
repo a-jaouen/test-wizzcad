@@ -38,6 +38,9 @@ export function addHandlerToRouter(
         case 'put':
             routerToAddTo.put(pathRoute, handlers)
             break
+        case 'patch':
+            routerToAddTo.patch(pathRoute, handlers)
+            break
         case 'head':
             routerToAddTo.head(pathRoute, handlers)
             break

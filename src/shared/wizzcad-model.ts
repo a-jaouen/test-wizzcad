@@ -56,6 +56,8 @@ export interface Section {
     items: (Field | Section)[]
 }
 
+export type FormItems = (Field | Section)[]
+
 /**
  * This interface represents a creation request of a form
  */
@@ -64,7 +66,7 @@ export interface FormRequest {
     /**
      * The underlying items of the form
      */
-    items: (Field | Section)[]
+    items: FormItems
 }
 
 export interface Form extends FormRequest {
