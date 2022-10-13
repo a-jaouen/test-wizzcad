@@ -9,8 +9,9 @@ In this document you will find everything needed to start contributing on the pr
 -   A minimal interface to serve the WIZZCAD forms, ready to be deployed on your favorite cloud environment. Create, read, update, archive, unarchive forms capabilities have been done.
 -   In store/postgresql, you will find everything needed to seed your staging, demos or production environments.
 -   A small example of swagger documentation hosted server.
--   One BDD integration test on the /health endpoint
+-   One BDD integration test on the `/health` endpoint
 -   Configuration files to help harmonizing code and methodology between contributing developpers
+-   Wizzcad.postman_collection.json: A postman collection as a helper for you developpers from WIZZCAD to easily start interacting with the server 🙂
 
 ## What I could have done to go further
 
@@ -71,6 +72,8 @@ Then you start the app
 npm run start
 ```
 
+> Note: you will need to setup a pgsql server. For that, you can use the one defined in the docker-compose.yaml via `docker-compose up wizzcad-model-db`
+
 ## Integration test
 
 Choice has been made to only do integration tests for this project. Note it's not meant to cover all cases but to demonstrate testing capabilities.
@@ -83,7 +86,7 @@ docker-compose run wizzcad-model-integrator
 ## Environment variables
 
 -   NODE_ENV
-    -   description: The node environment (will toggle logs, typing errors, CORS: allowed URLs to '\*' ...). Not implemented yet.
+    -   description: The node environment (will toggle logs, typing errors, CORS: allowed URLs to '\*' ...). **Not implemented yet.**
     -   allowed values: development, production
     -   default value: development
 -   PORT
@@ -108,7 +111,7 @@ docker-compose run wizzcad-model-integrator
 
 The server comes with its swagger documentation page
 
-You can access it at: [http://{URL}/{API_PREFIX}/docs/]()
+You can access it at: [http://{URL}/docs/]()
 
 Example: [http://localhost:8080/docs](http://localhost:8080/docs)
 

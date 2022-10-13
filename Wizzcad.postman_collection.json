@@ -1,0 +1,126 @@
+{
+    "info": {
+        "_postman_id": "1829ca2c-e9f2-4e11-876d-c23abc904866",
+        "name": "Wizzcad",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "14723032"
+    },
+    "item": [
+        {
+            "name": "Health check",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/health",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["health"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get all forms",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/v1/forms",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Get form by id",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/v1/forms/aef9f957-f96c-4c8a-8fa1-013998c3527a",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms", "aef9f957-f96c-4c8a-8fa1-013998c3527a"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Create a form",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"items\": [\r\n            {\r\n                \"uuid\": \"67f18feb-f54b-40b2-b772-b210e82d0ca2\",\r\n                \"items\": [\r\n                    {\r\n                        \"items\": [\r\n                            {\r\n                                \"name\": \"Name\",\r\n                                \"required\": true,\r\n                                \"fieldKind\": \"string\",\r\n                                \"objectKind\": \"field\"\r\n                            },\r\n                            {\r\n                                \"name\": \"Age\",\r\n                                \"required\": true,\r\n                                \"fieldKind\": \"integer\",\r\n                                \"objectKind\": \"field\"\r\n                            },\r\n                            {\r\n                                \"name\": \"Gender\",\r\n                                \"required\": false,\r\n                                \"fieldKind\": \"string\",\r\n                                \"objectKind\": \"field\"\r\n                            },\r\n                            {\r\n                                \"items\": [\r\n                                    {\r\n                                        \"name\": \"Number of children\",\r\n                                        \"fieldKind\": \"boolean\",\r\n                                        \"objectKind\": \"field\"\r\n                                    }\r\n                                ],\r\n                                \"objectKind\": \"section\"\r\n                            }\r\n                        ],\r\n                        \"objectKind\": \"section\"\r\n                    }\r\n                ],\r\n                \"archived\": false,\r\n                \"objectKind\": \"form\"\r\n            }\r\n        ],\r\n    \"objectKind\": \"form\"\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:8080/v1/forms",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Update a form",
+            "request": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"items\": []\r\n}",
+                    "options": {
+                        "raw": {
+                            "language": "json"
+                        }
+                    }
+                },
+                "url": {
+                    "raw": "localhost:8080/v1/forms/7a79e812-c8f0-4e79-8c23-9d851d47f7b6",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms", "7a79e812-c8f0-4e79-8c23-9d851d47f7b6"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Archive a form",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/v1/forms/aef9f957-f96c-4c8a-8fa1-013998c3527a/archive",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms", "aef9f957-f96c-4c8a-8fa1-013998c3527a", "archive"]
+                }
+            },
+            "response": []
+        },
+        {
+            "name": "Unarchive a form",
+            "request": {
+                "method": "PUT",
+                "header": [],
+                "url": {
+                    "raw": "localhost:8080/v1/forms/aef9f957-f96c-4c8a-8fa1-013998c3527a/unarchive",
+                    "host": ["localhost"],
+                    "port": "8080",
+                    "path": ["v1", "forms", "aef9f957-f96c-4c8a-8fa1-013998c3527a", "unarchive"]
+                }
+            },
+            "response": []
+        }
+    ]
+}
