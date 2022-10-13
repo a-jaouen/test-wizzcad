@@ -11,10 +11,6 @@
         "start": "ts-node-dev -r dotenv/config -r tsconfig-paths/register ./src/index.ts",
         "serve": "ts-node --transpile-only -r dotenv/config -r tsconfig-paths/register ./src/index.ts",
         "build": "tsc --lib dom",
-        "test": "jest",
-        "test:nocache": "jest --no-cache --runInBand",
-        "test:watch": "jest --watch --verbose false",
-        "test:ci:unit": "jest --forceExit --coverage --verbose --runInBand --passWithNoTests --no-cache --detectOpenHandles --runTestsByPath ./test/unit/**/*.[jt]s",
         "test:ci:integration": "jest --forceExit --verbose --runInBand --silent=true --passWithNoTests --no-cache --detectOpenHandles --runTestsByPath ./test/integration/**/*.[jt]s",
         "lint": "eslint './src/**/*'",
         "pretty": "prettier --write './src/**/*.{ts,js,json,md}'"

@@ -19,7 +19,6 @@ When("I check server's health", async () => {
 })
 
 Then('I get a 200 response and a json with ok flag set to true', async () => {
-    // expect(true).toBeTruthy()
     expect(res.status).toBe(200)
     expect(res.ok).toBe(true)
 })

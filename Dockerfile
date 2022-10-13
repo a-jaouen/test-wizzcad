@@ -36,22 +36,13 @@ ENTRYPOINT [ "npm", "run", "serve" ]
 
 
 ############################################################
-#                      TEST IMAGE                          #
+#                INTEGRATION TEST IMAGE                    #
 ############################################################
-FROM dev as tester
+FROM dev as integrator
 RUN mkdir /opt/coverage
 
 COPY ./jest.config.js ./jest.config.js
 COPY ./test ./test
-
-#the command we want to be run in our ci/cd
-ENTRYPOINT ["npm", "run", "test:ci:unit"]
-
-
-############################################################
-#                INTEGRATION TEST IMAGE                    #
-############################################################
-FROM tester as integrator
 
 ENTRYPOINT ["npm", "run", "test:ci:integration"]
 
