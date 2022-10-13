@@ -14,13 +14,13 @@ export class FormService {
         return await forms.insert(dbconn, formRequest)
     }
 
-    public async updateItemsByUuid(uuid: string, items: FormItems): Promise<Form> {
+    public async updateItemsByUuid(uuid: string, toUpdate: {items?: FormItems, archived?: boolean}): Promise<Form> {
         const dbconn = this.knexInstance.getInstance()
         if (!dbconn) {
             throw new Error('Unable to obtain db connection to insert')
         }
 
-        return await forms.updateByUuid(dbconn, uuid, items)
+        return await forms.updateByUuid(dbconn, uuid, toUpdate)
     }
 
     public async getAll(): Promise<Form[]> {

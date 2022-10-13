@@ -6,7 +6,7 @@ export async function httpHandler(req: Request, res: Response, next: NextFunctio
     const { items } = req.body
 
     return formService
-        .updateItemsByUuid(uuidForm, items)
+        .updateItemsByUuid(uuidForm, { items })
         .then((form) => {
             res.json(form)
         })

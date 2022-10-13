@@ -33,11 +33,16 @@ export async function insert(dbConnection: Knex, formRequest: FormRequest): Prom
     }
 }
 
-export async function updateByUuid(dbConnection: Knex, uuid: string, items: FormItems): Promise<Form> {
+export async function updateByUuid(
+    dbConnection: Knex,
+    uuid: string,
+    toUpdate: { items?: FormItems; archived?: boolean }
+): Promise<Form> {
     const newForm = await dbConnection<FormFields>('forms')
         .withSchema('wizzcad')
         .update({
-            items: JSON.stringify(items),
+            items: JSON.stringify(toUpdate.items),
+            archived: toUpdate.archived,
         })
         .where({ uuid })
         .returning('*')

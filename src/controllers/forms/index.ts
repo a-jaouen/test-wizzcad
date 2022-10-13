@@ -6,6 +6,7 @@ import { httpHandler as handlerGETForm } from './:uuidForm.GET'
 import { httpHandler as handlerGET } from './GET'
 import { httpHandler as handlerPOST } from './POST'
 import { httpHandler as handlerPATCHForm } from './:uuidForm.PATCH'
+import { archiveHandlerHelper as handlerPUTArchiveHelper } from './archive'
 
 const router = Router()
 
@@ -16,6 +17,10 @@ const handlerTable: RoutesInfos = {
     ],
     post: [{ path: '/', handler: handlerPOST }],
     patch: [{ path: `/:uuidForm(${expUUIDCheck})`, handler: handlerPATCHForm }],
+    put: [
+        { path: `/:uuidForm(${expUUIDCheck})/archive`, handler: handlerPUTArchiveHelper(true) },
+        { path: `/:uuidForm(${expUUIDCheck})/unarchive`, handler: handlerPUTArchiveHelper(false) },
+    ],
 }
 
 addAllRoutesToRouter(router, '', handlerTable)
